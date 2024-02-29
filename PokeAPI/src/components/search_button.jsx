@@ -24,7 +24,8 @@ const getPokemon = async (pokemon) => {
         let response2 = await axios.get(`https://pokeapi.co/api/v2/type/${type}`)
         let responseData =  response2.data;
         console.log(responseData)
-        let similarTypes = [responseData.pokemon[0].pokemon.name, responseData.pokemon[1].pokemon.name, responseData.pokemon[2].pokemon.name, responseData.pokemon[3].pokemon.name, responseData.pokemon[4].pokemon.name]
+        const randy = () => Math.floor(Math.random()*50)
+        let similarTypes = [responseData.pokemon[randy()].pokemon.name, responseData.pokemon[randy()+2].pokemon.name, responseData.pokemon[randy()+1].pokemon.name, responseData.pokemon[randy()+3].pokemon.name, responseData.pokemon[randy()+4].pokemon.name]
 
         for(let i=0; i<similarTypes.length; i++){
             let response3 = await axios.get(`https://pokeapi.co/api/v2/pokemon/${similarTypes[i]}`)
